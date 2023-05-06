@@ -3,8 +3,12 @@
     margin: 0;
     padding: 0;
 }
+* {
+    z-index: 1;
+}
 :hover,
 :focus {
+    transition-property: visiblity, opacity, transform;
     transition-duration: 250ms;
     transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -67,12 +71,13 @@ svg {
 .nav-link-active::after {
     content: '';
     position: absolute;
+    display: block;
     color: var(--only-blue);
     top: 45px;
     left: 0;
     right: 0;
-    height: 40px;
-    width: 10px;
+    height: 4px;
+    width: 100%;
 }
 .header-contacts {
     display: flex;
@@ -165,6 +170,77 @@ svg {
     padding: 10px 42px;
     margin: 0 auto;
 }
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: var(--white-font);
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 250ms ease-in;
+    z-index: 2;
+}
+
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+.is-hidden .modal {
+    transform: scale(0);
+}
+@keyframes modal-close {
+    0% {
+        transform: scale(1.25);
+    }
+    20 {
+        transform: scale(0.9);
+    }
+    40 {
+        transform: scale(0.6);
+    }
+    80 {
+        transform: scale(0.3);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+.white-space {
+    white-space: nowrap;
+    height: 581px;
+    width: 528px;
+    border-radius: 4px;
+    z-index: 2;
+}
+.x-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    float: right;
+    margin: 8px;
+}
+.x-button:focus .modal,
+.x-button:focus .is-hidden {
+    animation-name: modal-close;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+.x-icon {
+    fill: var(--dark-font);
+}
+
 /* LOREM IPSUM - index.html*/
 .icon-article {
     display: flex;
@@ -209,7 +285,7 @@ svg {
 }
 .img-with-title {
     position: relative;
-    display: inline-flex;
+    display: flex;
 }
 .img-title {
     font-family: Roboto;
@@ -464,4 +540,32 @@ ul#team li {
     color: var(--grey-font);
     font-size: 16px;
     line-height: 1.875;
+}
+
+.img-container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+.card-description {
+    margin-bottom: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(33, 150, 243, 0.9);
+    padding: 49px 45px 49px 24px;
+    font-size: 18px;
+    line-height: 1.55;
+    text-align: Left;
+    letter-spacing: 3%;
+    color: var(--white-font);
+    transform: translateY(102%);
+    transition: transform 250ms ease-in;
+}
+.card:hover .card-description {
+    transform: translateY(0);
 }
