@@ -63,7 +63,9 @@ svg {
     display: flex;
     gap: 46px;
 }
-
+.nav-link-active {
+    color: var(--only-blue);
+}
 .header-contacts {
     display: flex;
     gap: 50px;
