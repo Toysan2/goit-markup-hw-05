@@ -6,12 +6,7 @@
 * {
     z-index: 1;
 }
-:hover,
-:focus {
-    transition-property: visiblity, opacity, transform;
-    transition-duration: 250ms;
-    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
-}
+
 body {
     font-family: 'Roboto', sans-serif;
     color: var(--dark-font);
@@ -72,12 +67,13 @@ svg {
     content: '';
     position: absolute;
     display: block;
-    color: var(--only-blue);
+    background-color: var(--only-blue);
     top: 45px;
     left: 0;
     right: 0;
     height: 4px;
     width: 100%;
+    border-radius: 2px;
 }
 .header-contacts {
     display: flex;
@@ -91,9 +87,16 @@ svg {
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+    transition-property: color;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-link-active {
     color: var(--only-blue);
+    position: relative;
+    transition-property: background-color;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-font {
     font-style: normal;
@@ -103,9 +106,15 @@ svg {
     font-size: 14px;
     line-height: 1.14;
     letter-spacing: 0.02em;
+    transition-property: color;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-icon {
     margin-right: 10px;
+    transition-property: fill;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-font:hover .contact-icon,
 .contact-font:hover,
@@ -176,17 +185,23 @@ svg {
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
 
 .modal {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    display: flex;
+    justify-content: right;
+    justify-self: center;
     background-color: var(--white-font);
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
     transition: transform 250ms ease-in;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
 
@@ -194,27 +209,12 @@ svg {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
+    transition-delay: 250ms;
 }
 .is-hidden .modal {
     transform: scale(0);
 }
-@keyframes modal-close {
-    0% {
-        transform: scale(1.25);
-    }
-    20 {
-        transform: scale(0.9);
-    }
-    40 {
-        transform: scale(0.6);
-    }
-    80 {
-        transform: scale(0.3);
-    }
-    100% {
-        transform: scale(0);
-    }
-}
+
 .white-space {
     white-space: nowrap;
     height: 581px;
@@ -228,15 +228,9 @@ svg {
     height: 30px;
     border: solid 1px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    float: right;
     margin: 8px;
 }
-.x-button:focus .modal,
-.x-button:focus .is-hidden {
-    animation-name: modal-close;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-}
+
 .x-icon {
     fill: var(--dark-font);
 }
@@ -351,14 +345,21 @@ ul#team li {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition-property: background-color, fill, border-radius;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+.icon-employee-details {
+    transition-property: fill;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .icon-employee-size:hover .icon-employee-details {
     fill: var(--white-font);
 }
 .icon-employee-size:hover {
     fill: var(--white-font);
-    background: var(--only-blue);
+    background-color: var(--only-blue);
     border-radius: 50%;
 }
 .icon-employee-size:focus .icon-employee-details {
@@ -366,7 +367,7 @@ ul#team li {
 }
 .icon-employee-size:focus {
     fill: var(--white-font);
-    background: var(--only-blue);
+    background-color: var(--only-blue);
     border-radius: 50%;
 }
 /* Nasi klienci */
@@ -374,6 +375,11 @@ ul#team li {
     display: flex;
     justify-content: center;
     gap: 30px;
+}
+.client-icons {
+    transition-property: fill;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-clients-size {
     width: 170px;
@@ -383,6 +389,9 @@ ul#team li {
     align-items: center;
     border: 1px solid var(--grey-icon);
     border-radius: 4px;
+    transition-property: border-color;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .icon-clients-size:hover .client-icons {
     fill: var(--only-blue);
@@ -465,7 +474,11 @@ ul#team li {
     align-items: center;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
+    transition-property: background-color, border-radius;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .icon-join-us-details {
     fill: var(--white-font);
 }
@@ -474,7 +487,7 @@ ul#team li {
     fill: var(--white-font);
 }
 .join-us-size:hover {
-    background: var(--only-blue);
+    background-color: var(--only-blue);
     border-radius: 50%;
 }
 
@@ -482,7 +495,7 @@ ul#team li {
     fill: var(--white-font);
 }
 .join-us-size:focus {
-    background: var(--only-blue);
+    background-color: var(--only-blue);
     border-radius: 50%;
 }
 /* main - filters - portfolio.html */
@@ -496,6 +509,9 @@ ul#team li {
     line-height: 1.62;
     font-weight: 500;
     padding: 6px 22px;
+    transition-property: background-color, color;
+    transition-duration: 250ms;
+    transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .filters {
     display: flex;
@@ -543,12 +559,14 @@ ul#team li {
 }
 
 .img-container {
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     overflow: hidden;
 }
+
 .card-description {
     margin-bottom: 4px;
     position: absolute;
@@ -566,6 +584,7 @@ ul#team li {
     transform: translateY(102%);
     transition: transform 250ms ease-in;
 }
+
 .card:hover .card-description {
     transform: translateY(0);
 }
