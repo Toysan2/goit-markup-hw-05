@@ -350,6 +350,7 @@ ul#team li {
     transition-property: background-color, fill, border-radius;
     transition-duration: 250ms;
     transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
 }
 .icon-employee-details {
     transition-property: fill;
@@ -362,7 +363,6 @@ ul#team li {
 .icon-employee-size:hover {
     fill: var(--white-font);
     background-color: var(--only-blue);
-    border-radius: 50%;
 }
 .icon-employee-size:focus .icon-employee-details {
     fill: var(--white-font);
@@ -370,7 +370,6 @@ ul#team li {
 .icon-employee-size:focus {
     fill: var(--white-font);
     background-color: var(--only-blue);
-    border-radius: 50%;
 }
 /* Nasi klienci */
 .client-icons-container {
@@ -548,6 +547,10 @@ ul#team li {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
 }
+.product:focus {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+}
 .product-name {
     color: var(--dark-background);
     font-size: 18px;
@@ -588,5 +591,8 @@ ul#team li {
 }
 
 .card:hover .card-description {
+    transform: translateY(0);
+}
+.card:focus .card-description {
     transform: translateY(0);
 }
