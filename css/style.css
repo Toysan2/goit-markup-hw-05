@@ -99,6 +99,8 @@ svg {
     transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact-font {
+    display: flex;
+    align-items: center;
     font-style: normal;
     text-decoration: none;
     color: var(--grey-font);
